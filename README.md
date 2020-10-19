@@ -26,7 +26,7 @@ scikit-learn == 0.22.1
 5. Evaluation
 6. Save
 
-Let's try follow code in jupyter notebook
+Let's try coding with examples
 
 - [Regression Notbook](https://github.com/DataNetworkAnalysis/Machine-Learning-Pipeline/blob/main/notebook/Process%20(Regression).ipynb)
 - [Classification Notbook](https://github.com/DataNetworkAnalysis/Machine-Learning-Pipeline/blob/main/notebook/Process%20(Classification).ipynb)
