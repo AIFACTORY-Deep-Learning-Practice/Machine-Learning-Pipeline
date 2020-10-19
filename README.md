@@ -15,6 +15,53 @@ scikit-learn == 0.22.1
 - Regression
 - Classification
 
+# ML in scikit-learn
+
+## Models
+
+**Linear Models**
+
+- Linear Regression
+- Logistic Regression
+- Ridge
+- Lasso
+- ElasticNet
+
+**Tree-based Models**
+
+- Decision Tree
+- Random Forest
+- Adaboost
+- Gradient Tree Boosting
+
+**Support Vector Machine**
+
+- SVC (classification)
+- SVR (regression)
+
+**Naighbors**
+
+- K-Nearest Neighbors
+
+## Evaluation
+
+**Regression**
+
+- Mean Squared Error, MSE
+- Mean Absolued Error, MAE
+
+**Classification**
+
+- Accuracy
+- Recall
+- Precision
+- F1-score
+- AUC
+
+## Save & Load
+
+- pickle
+
 # Process
 
 **Basic process for machine learning (ML)**
