@@ -28,6 +28,9 @@ scikit-learn == 0.22.1
 
 Let's try follow code in jupyter notebook
 
+- [Regression Notbook](https://github.com/DataNetworkAnalysis/Machine-Learning-Pipeline/blob/main/notebook/Process%20(Regression).ipynb)
+- [Classification Notbook](https://github.com/DataNetworkAnalysis/Machine-Learning-Pipeline/blob/main/notebook/Process%20(Classification).ipynb)
+
 # Pipeline
 
 **Scripts**
