@@ -36,17 +36,17 @@ if __name__=='__main__':
         
         data_generator(task=args.task, n_samples=n_samples, n_features=n_features, noise=noise, test_size=test_size, random_state=args.seed)
     
-    # load data
+    # 1. load data
     train, test = dataloader(task=args.task, datadir=args.datadir)
     
-    # preprocessing
+    # 2. preprocessing
     x_train, y_train = preprocessing(data=train, data_type='train')
     x_test = preprocessing(data=test, data_type='test')
 
-    # model setting
+    # 3. model setting
     model = SklearnModels(task=args.task, modelname=args.modelname, random_state=args.seed)
 
-    # training
+    # 4. training
     if args.kfold:
         cross_validation(K=args.kfold, model=model, train=[x_train, y_train], test=x_test, args=args)
     else:
