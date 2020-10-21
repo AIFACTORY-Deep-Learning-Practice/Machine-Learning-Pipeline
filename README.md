@@ -85,7 +85,117 @@ Let's try coding with examples
 ```bash
 .
 ├── dataload.py
+├── evaluate.py
 ├── main.py
 ├── model.py
+├── train.py
 └── utils.py
+```
+
+## main.py
+
+**Argument**
+
+```
+Machine Learning Pipeline
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --seed SEED           Set seed
+  --task {regression,classification}
+                        Choice machine learning task
+  --datagen DATAGEN     Generate train and test set
+  --datadir DATADIR     Set data directory
+  --logdir LOGDIR       Set log directory
+  --val_size VAL_SIZE   Set validation size
+  --kfold KFOLD         Number of cross validation
+  --modelname {OLS,Logistic,Ridge,Lasso,ElasticNet,DT,RF,ADA,GT,SVM,KNN}
+                        Choice machine learning model
+```
+
+**Code**
+
+```python
+# 1. load data
+train, test = dataloader(task=args.task, datadir=args.datadir)
+
+# 2. preprocessing
+x_train, y_train = preprocessing(data=train, data_type='train')
+x_test = preprocessing(data=test, data_type='test')
+
+# 3. model setting
+model = SklearnModels(task=args.task, modelname=args.modelname, random_state=args.seed)
+
+# 4. training
+if args.kfold:
+    cross_validation(K=args.kfold, model=model, train=[x_train, y_train], test=x_test, args=args)
+else:
+    training(model=model, train=[x_train, y_train], test=x_test, args=args)
+```
+
+## model.py
+
+```python
+class SklearnModels:
+    def __init__(self, **kwargs):
+        pass
+
+    def build(self, **kwargs):
+        pass
+
+    def fit(self, **kwargs):
+        pass
+
+    def eval(self, **kwargs):
+        pass
+        
+    def predict(self, **kwargs):
+        pass
+
+    def load(self,, **kwargs):
+        pass
+```
+
+
+## dataload.py
+
+```python
+def data_generator(**kwargs):
+    pass
+
+def dataloader(**kwargs):
+    pass
+
+def preprocessing(**kwargs):
+    pass
+```
+
+## train.py
+
+```python
+def training(model, train: list, test, args):
+    pass
+
+def cross_validation(K, model, train: list, test, args):
+    pass
+```
+
+## evaluate.py
+
+```python
+def evaluation_all(task, y_true, y_pred, threshold=0.5):
+    pass
+```
+
+## utils.py
+
+```python
+def results_save(**kwargs):
+    pass
+
+def results_comparison(**kwargs):
+    pass
+
+def results_bar(**kwargs):
+    pass
 ```
