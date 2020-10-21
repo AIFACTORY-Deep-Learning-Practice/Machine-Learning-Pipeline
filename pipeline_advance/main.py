@@ -1,8 +1,7 @@
 import argparse
 
-from dataload import dataloader, preprocessing
+from dataload import data_generator, dataloader, preprocessing
 from model import SklearnModels
-from utils import data_generator
 from train import training, cross_validation
 
 import os
