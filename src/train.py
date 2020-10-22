@@ -28,10 +28,8 @@ def training(model, train: list, test, args):
 
     # save results
     submission['y'] = y_pred
-    results_save(task=args.task, 
-                 logdir=args.logdir,
+    results_save(args=args,
                  model=model, 
-                 modelname=args.modelname, 
                  validation_results=val_results,
                  test_results=test_results,
                  submission=submission)
@@ -76,10 +74,8 @@ def cross_validation(K, model, train: list, test, args):
         test_results = evaluation_all(task=args.task, y_true=y_test, y_pred=submission['y'].values)
 
         # save results
-        results_save(task=args.task, 
-                     logdir=args.logdir,
+        results_save(args=args,
                      model=model, 
-                     modelname=args.modelname, 
                      validation_results=val_results, 
                      test_results=test_results,
                      submission=submission,

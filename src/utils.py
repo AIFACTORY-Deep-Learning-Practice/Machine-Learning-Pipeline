@@ -1,16 +1,16 @@
 import pickle 
 import pandas as pd
 import os
+import sys
 
-
-def results_save(task, logdir, model, modelname, validation_results, test_results, submission, kfold_i=None):
+def results_save(args, model, validation_results, test_results, submission, kfold_i=None):
     # make logs folder
-    savedir = logdir
+    savedir = args.logdir
     if not os.path.isdir(savedir):
         os.mkdir(savedir)
 
     # make task folder
-    savedir = os.path.join(savedir, f'{task}')
+    savedir = os.path.join(savedir, f'{args.task}')
     if not os.path.isdir(savedir):
         os.mkdir(savedir)
 
@@ -25,21 +25,24 @@ def results_save(task, logdir, model, modelname, validation_results, test_result
         version -= 1
         savedir = os.path.join(savedir, f'version{version}')
         
-    # update save directory of model and results 
-    modeldir = os.path.join(savedir, f'{modelname}.pkl' if kfold_i==None else f'{modelname}_{kfold_i}.pkl')
+    # update save directory of model, results, and commendline
+    modeldir = os.path.join(savedir, f'{args.modelname}.pkl' if kfold_i==None else f'{args.modelname}_{kfold_i}.pkl')
     resultsdir = os.path.join(savedir, f'validation_results.pkl')
     testdir = os.path.join(savedir, 'test_results.pkl')
     subdir = os.path.join(savedir, 'prediction.csv')
+    cmddir = os.path.join(savedir, 'commenline.txt')
 
-    # save model and results
+    # save model, results, and commendline
     pickle.dump(model.model, open(modeldir,'wb'))
     pickle.dump(validation_results, open(resultsdir,'wb'))
     pickle.dump(test_results, open(testdir,'wb'))
     submission.to_csv(subdir, index=False)
+    f = open(cmddir, 'w')
+    f.write('python '+' '.join(sys.argv))
 
 
-def results_comparison(task, datatype):
-    savedir = f'../logs/{task}'
+def results_comparison(task, datatype, logdir):
+    savedir = os.path.join(logdir, task)
     versions = os.listdir(savedir)
     
     results_lst = []
